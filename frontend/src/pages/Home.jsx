@@ -13,7 +13,7 @@ import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
-    <div>
+   <div>
       <Navbar />
       <Box
         bgImage={"https://cdn1.cronometer.com/webflow/dot-pattern.svg"}
