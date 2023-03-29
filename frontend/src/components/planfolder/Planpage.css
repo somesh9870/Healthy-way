@@ -1,0 +1,20 @@
+.Cronogold{
+    border-radius: 5px;
+    background: rgb(244, 233, 233);
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2,  1fr);
+    justify-content: space-between;
+}
+.Cronogold>div{
+    display: grid;
+    justify-content:space-around;
+}
+.hide{
+width: 500%;
+display: grid;
+
+align-items: center;
+justify-content: space-between;
+}
