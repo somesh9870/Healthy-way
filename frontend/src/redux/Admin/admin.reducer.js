@@ -26,8 +26,96 @@ export const reducer = (state = initialState, { type, payload }) => {
     case types.ADMIN_GETUSERS:
       return {
         ...state,
-        users:payload
+        users: payload,
       };
+
+    case types.ADMIN_DELETE_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case types.ADMIN_DELETE_ERROR:
+      return {
+        ...state,
+        isError: true,
+        isLoading: false,
+      };
+
+    case types.ADMIN_DELETEUSRS:
+      return {
+        ...state,
+        users: state.users.filter((item) => item.id !== payload),
+      };
+
+    case types.ADMIN_NUTRIDATA_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case types.ADMIN_NUTRIDATA_ERROR:
+      return {
+        ...state,
+        isError: true,
+        isLoading: false,
+      };
+
+    case types.ADMIN_NUTRIDATA:
+      return {
+        ...state,
+        nutriData: payload,
+      };
+
+    case types.ADMIN_DELETE_NUTRIDATA:
+      return {
+        ...state,
+        nutriData: state.nutriData.filter((item) => item.id !== payload),
+      };
+
+      
+      case types.ADMIN_ADD_NUTRIDATA_LOADING: 
+      return {
+        ...state,
+        isLoading:true
+      }
+
+      
+      case types.ADMIN_ADD_NUTRIDATA_ERROR: 
+      return {
+        ...state,
+        isLoading:false,
+        isError:true
+      }
+
+    case types.ADMIN_ADD_NUTRIDATA:
+      return {
+        ...state,
+        nutriData: [payload, ...state.nutriData],
+      };
+
+      case types.ADMIN_UPDATE_NUTRIDATA_LOADING: 
+      return {
+        ...state,
+        isLoading:true
+      }
+
+      
+      case types.ADMIN_UPDATE_NUTRIDATA_ERROR: 
+      return {
+        ...state,
+        isLoading:false,
+        isError:true
+      }
+
+      case types.ADMIN_UPDATE_NUTRIDATA:
+        return {
+          ...state,
+          isLoading: false,
+          nutriData: state.nutriData.map((item) =>
+            item.id === payload.id ? payload : item
+          ),
+        };
 
     default:
       return state;
