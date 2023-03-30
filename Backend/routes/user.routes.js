@@ -81,7 +81,7 @@ userRouter.post("/verify-otp", async (req, res) => {
       return res.status(400).send({ message: "Email already exists" });
     }
 
-    // changing data to readabel format
+    // changing date to readabel format
     const dateString = birthday;
     const date = new Date(dateString);
     const formattedDate = date.toLocaleDateString();
@@ -112,6 +112,7 @@ userRouter.post("/login", async (req, res) => {
   try {
     // Finding the existing user
     const user = await UserModel.find({ email: email });
+    console.log(user)
 
     if (user.length > 0) {
       // comparing the password with the existing user password
@@ -120,7 +121,7 @@ userRouter.post("/login", async (req, res) => {
           res.status(200).send({
             message: "Login successful",
             // Generating the jwt token
-            token: jwt.sign({ userID: user._id }, "somesh"),
+            token: jwt.sign({ userID: user[0]._id }, process.env.secretKey),
           });
         } else {
           res.status(400).send({ message: "Invalid password" });
