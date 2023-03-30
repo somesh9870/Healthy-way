@@ -28,8 +28,7 @@ const nutrientSchema = mongoose.Schema(
     },
     filter: {
       type: String,
-    },
-    userID: String,
+    }
   },
   {
     versionKey: false,

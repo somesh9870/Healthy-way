@@ -6,6 +6,8 @@ const session = require("express-session");
 const userRouter = require("./routes/user.routes");
 const userDataRouter = require("./routes/userdata.route");
 const auth = require("./middlewares/auth.middleware");
+const adminRouter = require("./routes/admin.routes");
+const nutriRouter = require("./routes/nutrient.route");
 
 const app = express();
 
@@ -19,8 +21,12 @@ app.use(
   })
 );
 
+app.use("/admin", adminRouter);
 app.use("/users", userRouter);
-app.use(auth);
+app.use("/nutrient", nutriRouter);
+
+// to make relationship between users and data
+app.use(auth)
 app.use("/userdata", userDataRouter);
 
 // listening to server --
