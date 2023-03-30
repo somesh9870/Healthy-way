@@ -21,6 +21,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -33,15 +34,21 @@ import {
 } from "react-icons/fi";
 import { MdOutlineEmojiFoodBeverage } from "react-icons/md";
 import { AiOutlineLogin } from "react-icons/ai";
-import { IconType } from "react-icons";
+import { MdOutlineAdd } from "react-icons/md";
 import { ReactText } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import Logo from "../assets/HealthyWay_Logo.png";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Users", icon: FiUsers },
-  { name: "NutriData", icon: MdOutlineEmojiFoodBeverage },
-  { name: "Login", icon: AiOutlineLogin },
+  { name: "Home", icon: FiHome, path: "" },
+  { name: "Users", icon: FiUsers, path: "users" },
+  {
+    name: "NutriData",
+    icon: MdOutlineEmojiFoodBeverage,
+    path: "nutridata",
+  },
+  { name: "Add Nutriants", icon: MdOutlineAdd, path: "nutridata/add" },
+  { name: "Login", icon: AiOutlineLogin, path: "login" },
 ];
 const SidebarWithNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -88,13 +95,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          {Logo}
+        </Text> */}
+        <RouterLink to={"/"}>
+          <Image src={Logo} />
+        </RouterLink>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem name={link.name} icon={link.icon}>
+        <NavItem name={link.name} icon={link.icon} path={link.path}>
           {link.name}
         </NavItem>
       ))}
@@ -102,10 +112,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, name, children, ...rest }) => {
+const NavItem = ({ icon, name, path, children, ...rest }) => {
+  console.log(path);
   return (
     <Link
-      href={`/admin/${name}`}
+      href={`/admin/${path}`}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
