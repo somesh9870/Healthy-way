@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Flex, Text, IconButton, Divider, Avatar, Heading, Image } from '@chakra-ui/react'
+import { Flex, Text, IconButton, Divider, Heading, Image, Button } from '@chakra-ui/react'
 import { FiMenu, FiSettings } from 'react-icons/fi'
 import {TbLayoutDashboard} from "react-icons/tb";
-import {BsFillJournalBookmarkFill} from "react-icons/bs";
+import {BsFillJournalBookmarkFill, BsInfoCircle} from "react-icons/bs";
 import {BiDollarCircle, BiHelpCircle} from "react-icons/bi";
 import {AiOutlineBarChart} from "react-icons/ai";
 import {FaAppleAlt} from "react-icons/fa";
@@ -20,12 +20,12 @@ export default function Sidebar() {
             boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
             // borderRadius={navSize == "small" ? "15px" : "30px"}
             borderRightRadius="20px"
-            w={navSize == "small" ? "75px" : "300px"}
+            w={navSize == "small" ? {base: "10%", md: "7%", lg: "5%"} : {base: "40%", sm: "30%", lg: "20%"}}
             bgColor="#272a3a"
             color="#fcfcfd"
             flexDir="column"
+            // overflowX="none"
             justifyContent="space-between"
-            overflow="auto"
         >
             <Flex
                 p={navSize == "small" ? "5%" : "0"}
@@ -34,14 +34,16 @@ export default function Sidebar() {
                 alignItems={navSize == "small" ? "center" : "flex-start"}
                 as="nav"
                 px={navSize == "small" ? "0" : "3"}
+                // mb="2"
             >
-                <Flex flexDir="row" justifyContent="space-around" mb="2">
-                    <Image src={Logo} alt='Logo' w="50%" background={"none"} display={navSize == "small" ? "none" : "block"} />
+                <Flex flexDir="row" justifyContent="space-around" alignItems="center" mb="2">
+                    <Image src={Logo} alt='Logo' w="60%" background={"none"} display={navSize == "small" ? "none" : "block"} />
                     <IconButton
                         background="none"
                         // mt={5}
-                        size="lg"
-                        _hover={{ background: 'none', color : '#44d07b', border: '1px solid #44d07b' }}
+                        size={{base: "sm", md: "md", lg: "lg"}}
+                        // size="lg"
+                        _hover={{ background: 'none', color : '#44d07b', border: '1px solid #44d07b', borderRadius: '50px' }}
                         icon={<FiMenu />}
                         onClick={() => { navSize == "small" ? changeNavSize("large") : changeNavSize("small") }}
                     />
@@ -55,6 +57,7 @@ export default function Sidebar() {
                 <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
                 <NavItem navSize={navSize} icon={BiDollarCircle} title="Plans" />
                 <NavItem navSize={navSize} icon={BiHelpCircle} title="Help" />
+                <NavItem navSize={navSize} icon={BsInfoCircle} title="About" />
             </Flex>
 
             <Flex
@@ -62,15 +65,19 @@ export default function Sidebar() {
                 flexDir="column"
                 w="100%"
                 alignItems={navSize == "small" ? "center" : "flex-start"}
-                mb={4}
+                pb="5"
             >
                 <Divider display={navSize == "small" ? "none" : "flex"} />
-                <Flex mt={4} align="center">
-                    <Avatar size="sm" src="avatar-1.jpg" />
-                    {/* <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
-                        <Heading as="h3" size="sm">Sylwia Weller</Heading>
-                        <Text color="gray">Admin</Text>
-                    </Flex> */}
+                <Flex flexDir={"column"}>
+                    <Flex w="100%" justifyContent={"center"} display={navSize == "small" ? "none" : "flex"}>
+                        <Image src='https://www.svgrepo.com/show/303128/download-on-the-app-store-apple-logo.svg' alt='Apple Store' w={"40%"} />
+                        <Image src='https://www.logo.wine/a/logo/Google_Play/Google_Play-Badge-Logo.wine.svg' alt='Google Play' w={"54%"} />
+                    </Flex>
+                    <Flex>
+                        <Button borderRadius="50px" backgroundColor="#44d07b" color="#272a3a" _hover={{bgColor: "transparent", border: "2px solid #44d07b", color:"#44d07b"}} gap="10px" fontSize="15px" size={{base: "xs", md: "sm", lg: "md"}}>
+                            <BiHelpCircle size="1em" />{navSize == "small" ? "" : "Support"}
+                        </Button>
+                    </Flex>
                 </Flex>
             </Flex>
         </Flex>
