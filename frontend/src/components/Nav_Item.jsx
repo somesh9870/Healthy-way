@@ -22,19 +22,19 @@ export default function NavItem({ icon, title, description, active, navSize }) {
                     <MenuButton w="100%">
                         <Flex alignItems="center">
                             <Icon as={icon} fontSize="xl" />
-                            <Text ml={5} display={navSize == "small" ? "none" : "flex"} fontSize="15px" >{title}</Text>
+                            <Text ml={5} display={navSize == "small" ? "none" : "flex"} fontSize={{base: "10px",sm: "15px", md: "15px", lg: "15px"}} >{title}</Text>
                         </Flex>
                     </MenuButton>
                 </Link>
-                <MenuList
+                {/* <MenuList
                     py={0}
                     border="none"
                     w={200}
                     h={200}
                     ml={5}
                 >
-                    {/* <NavHoverBox title={title} icon={icon} description={description} /> */}
-                </MenuList>
+                    <NavHoverBox title={title} icon={icon} description={description} />
+                </MenuList> */}
             </Menu>
         </Flex>
     )
