@@ -14,7 +14,7 @@ nutriRouter.get("/list", async (req, res) => {
   }
 });
 
-// to add new nutrient data only by authorized (admin) 
+// to add new nutrient data only by authorized (admin)
 nutriRouter.post("/add", adminauth, async (req, res) => {
   const payload = req.body;
   try {
@@ -26,7 +26,7 @@ nutriRouter.post("/add", adminauth, async (req, res) => {
   }
 });
 
-// to update nutrien only by authorized (admin) 
+// to update nutrien only by authorized (admin)
 nutriRouter.patch("/update/:id", adminauth, async (req, res) => {
   const { id } = req.params;
   try {
@@ -37,7 +37,7 @@ nutriRouter.patch("/update/:id", adminauth, async (req, res) => {
   }
 });
 
-// to delete nutrient only by authorized (admin) 
+// to delete nutrient only by authorized (admin)
 nutriRouter.delete("/delete/:id", adminauth, async (req, res) => {
   const { id } = req.params;
   try {
