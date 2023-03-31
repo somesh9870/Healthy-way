@@ -1,4 +1,4 @@
-import { Heading } from "@chakra-ui/react";
+import { Heading, useToast } from "@chakra-ui/react";
 import React from "react";
 import SidebarWithNav from "../../components/SidebarWithNav";
 import { useState } from "react";
@@ -9,13 +9,13 @@ import {
   Flex,
   Button,
   Select,
-
   Box,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { addAdminNutriData } from "../../redux/Admin/admin.action";
 
 const AdminAddNutridata = () => {
+  const toast = useToast();
   const dispatch = useDispatch();
   const initialState = {
     name: "",
@@ -23,7 +23,7 @@ const AdminAddNutridata = () => {
     protein: "",
     carbs: "",
     fat: "",
-    ss: "1",
+    servingsize: "1",
     filter: "all",
   };
 
@@ -37,6 +37,14 @@ const AdminAddNutridata = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addAdminNutriData(formData));
+    toast({
+      title: `Data Added`,
+      description: "",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+
     setFormData(initialState);
   };
   return (
@@ -108,8 +116,12 @@ const AdminAddNutridata = () => {
               />
             </FormControl>
             <FormControl isRequired>
-              <FormLabel>SS</FormLabel>
-              <Select value={formData.ss} name="ss" onChange={handleChange}>
+              <FormLabel>ServingSize</FormLabel>
+              <Select
+                value={formData.ss}
+                name="servingsize"
+                onChange={handleChange}
+              >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

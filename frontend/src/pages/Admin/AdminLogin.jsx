@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdminUsers } from "../../redux/Admin/admin.action";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Checkbox,
@@ -12,12 +13,15 @@ import {
   Link,
   Stack,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleLogin = async () => {
     const payload = {
@@ -25,11 +29,25 @@ const AdminLogin = () => {
       password,
     };
 
-    let res = await axios.get(`http://localhost:8080/admin`);
-    if (
-      res.data.email === payload.email &&
-      res.data.password === payload.password
-    ) {
+    let res = await axios.post(
+      `https://panicky-crow-cardigan.cyclic.app/admin/login`,
+      payload
+    );
+    localStorage.setItem("adminToken", res.data.token);
+
+    try {
+      if (res.data.token) {
+        toast({
+          title: `Login Successfull`,
+          description: "",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        navigate("/admin");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (

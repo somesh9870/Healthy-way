@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { deleteAdminUser } from "../redux/Admin/admin.action";
 
 const AdminUsercard = ({
-  id,
+  _id,
   email,
   password,
   sex,
@@ -26,7 +26,7 @@ const AdminUsercard = ({
   height,
   weight,
   role,
-  otpVerified,
+  active,
 }) => {
   const dispatch = useDispatch();
   const toast = useToast();
@@ -66,7 +66,7 @@ const AdminUsercard = ({
             content: '""',
             w: 4,
             h: 4,
-            bg: otpVerified ? "green.500" : "red.500",
+            bg: active ? "green.500" : "red.500",
             border: "2px solid white",
             rounded: "full",
             pos: "absolute",
@@ -107,17 +107,7 @@ const AdminUsercard = ({
           </ListItem>
         </List>
 
-        {otpVerified ? (
-          <Badge colorScheme="teal" ml={2}>
-            OTP Verified
-          </Badge>
-        ) : (
-          <Badge colorScheme="red" ml={2}>
-            OTP NotVerified
-          </Badge>
-        )}
-
-        <Stack mt={8} direction={"row"} spacing={4} >
+        <Stack mt={8} direction={"row"} spacing={4}>
           <Button
             flex={1}
             fontSize={"sm"}
@@ -134,7 +124,7 @@ const AdminUsercard = ({
             See Data
           </Button>
           <Button
-            onClick={() => handleDelete(id)}
+            onClick={() => handleDelete(_id)}
             flex={1}
             fontSize={"sm"}
             rounded={"full"}
