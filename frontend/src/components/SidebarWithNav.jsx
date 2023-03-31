@@ -113,7 +113,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, name, path, children, ...rest }) => {
-  console.log(path);
   return (
     <Link
       href={`/admin/${path}`}

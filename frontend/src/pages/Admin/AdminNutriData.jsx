@@ -8,7 +8,7 @@ import { getAdminNutriData } from "../../redux/Admin/admin.action";
 const AdminNutriData = () => {
   const { isLoading, isError, nutriData } = useSelector((store) => store.admin);
   const dispatch = useDispatch();
-  console.log(nutriData);
+
 
   useEffect(() => {
     if (nutriData.length === 0) {
@@ -37,7 +37,7 @@ const AdminNutriData = () => {
         {" "}
         {nutriData.map((item) => (
           <>
-            <AdminNutriCard key={item.id} {...item} />
+            <AdminNutriCard key={item._id} {...item} />
           </>
         ))}
       </Grid>

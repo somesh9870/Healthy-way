@@ -51,7 +51,7 @@ export const getAdminNutriData = () => async (dispatch) => {
   dispatch({ type: ADMIN_NUTRIDATA_LOADING });
   try {
     let res = await getnutriData();
-    dispatch({ type: ADMIN_NUTRIDATA, payload: res });
+    dispatch({ type: ADMIN_NUTRIDATA, payload: res.data });
   } catch (error) {
     dispatch({ type: ADMIN_NUTRIDATA_ERROR });
   }
@@ -73,7 +73,7 @@ export const addAdminNutriData = (data) => async (dispatch) => {
   dispatch({ type: ADMIN_ADD_NUTRIDATA_LOADING });
   try {
     let res = await addnutriData(data);
-    dispatch({ type: ADMIN_ADD_NUTRIDATA_ERROR, payload: res });
+    dispatch({ type: ADMIN_ADD_NUTRIDATA_ERROR, payload: data });
   } catch (error) {
     dispatch({ type: ADMIN_ADD_NUTRIDATA_ERROR });
   }
@@ -84,7 +84,8 @@ export const updateAdminNutriData = (nutriId, data) => async (dispatch) => {
   dispatch({ type: ADMIN_UPDATE_NUTRIDATA_LOADING });
   try {
     let res = await updateNutriData(nutriId, data);
-    dispatch({ type: ADMIN_UPDATE_NUTRIDATA, payload: res });
+
+    dispatch({ type: ADMIN_UPDATE_NUTRIDATA, payload: res.data });
   } catch (error) {
     dispatch({ type: ADMIN_UPDATE_NUTRIDATA_ERROR });
   }

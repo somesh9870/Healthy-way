@@ -9,6 +9,7 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
+
   switch (type) {
     case types.ADMIN_LOADING:
       return {
@@ -45,7 +46,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     case types.ADMIN_DELETEUSRS:
       return {
         ...state,
-        users: state.users.filter((item) => item.id !== payload),
+        users: state.users.filter((item) => item._id !== payload),
       };
 
     case types.ADMIN_NUTRIDATA_LOADING:
@@ -70,23 +71,21 @@ export const reducer = (state = initialState, { type, payload }) => {
     case types.ADMIN_DELETE_NUTRIDATA:
       return {
         ...state,
-        nutriData: state.nutriData.filter((item) => item.id !== payload),
+        nutriData: state.nutriData.filter((item) => item._id !== payload),
       };
 
-      
-      case types.ADMIN_ADD_NUTRIDATA_LOADING: 
+    case types.ADMIN_ADD_NUTRIDATA_LOADING:
       return {
         ...state,
-        isLoading:true
-      }
+        isLoading: true,
+      };
 
-      
-      case types.ADMIN_ADD_NUTRIDATA_ERROR: 
+    case types.ADMIN_ADD_NUTRIDATA_ERROR:
       return {
         ...state,
-        isLoading:false,
-        isError:true
-      }
+        isLoading: false,
+        isError: true,
+      };
 
     case types.ADMIN_ADD_NUTRIDATA:
       return {
@@ -94,28 +93,27 @@ export const reducer = (state = initialState, { type, payload }) => {
         nutriData: [payload, ...state.nutriData],
       };
 
-      case types.ADMIN_UPDATE_NUTRIDATA_LOADING: 
+    case types.ADMIN_UPDATE_NUTRIDATA_LOADING:
       return {
         ...state,
-        isLoading:true
-      }
+        isLoading: true,
+      };
 
-      
-      case types.ADMIN_UPDATE_NUTRIDATA_ERROR: 
+    case types.ADMIN_UPDATE_NUTRIDATA_ERROR:
       return {
         ...state,
-        isLoading:false,
-        isError:true
-      }
+        isLoading: false,
+        isError: true,
+      };
 
-      case types.ADMIN_UPDATE_NUTRIDATA:
-        return {
-          ...state,
-          isLoading: false,
-          nutriData: state.nutriData.map((item) =>
-            item.id === payload.id ? payload : item
-          ),
-        };
+    case types.ADMIN_UPDATE_NUTRIDATA:
+      return {
+        ...state,
+        isLoading: false,
+        nutriData: state.nutriData.map((item) =>
+          item._id === payload._id ? payload : item
+        ),
+      };
 
     default:
       return state;

@@ -29,13 +29,13 @@ import {
 } from "../redux/Admin/admin.action";
 
 const AdminNutriCard = ({
-  id,
+  _id,
   name,
   energy,
   protein,
   carbs,
   fat,
-  ss,
+  servingsize,
   filter,
 }) => {
   const initialState = {
@@ -44,7 +44,7 @@ const AdminNutriCard = ({
     protein: "",
     carbs: "",
     fat: "",
-    ss: "1",
+    servingsize: "1",
     filter: "all",
   };
   const { isLoading, isError, nutriData } = useSelector((store) => store.admin);
@@ -76,15 +76,15 @@ const AdminNutriCard = ({
   const handleClick = (id, onOpen) => {
     onOpen();
     if (id) {
-      const toUpdate = nutriData.find((item) => item.id === Number(id));
+      const toUpdate = nutriData.find((item) => item._id === id);
       setCurrentProduct(toUpdate);
     }
   };
 
   const handleUpdate = (onClose) => {
-    dispatch(updateAdminNutriData(currentProduct.id, currentProduct));
+    dispatch(updateAdminNutriData(currentProduct._id, currentProduct));
     toast({
-      title: `NutriFood No ${currentProduct.id} Updated`,
+      title: `NutriFood No ${currentProduct._id} Updated`,
       description: "",
       status: "success",
       duration: 3000,
@@ -98,7 +98,7 @@ const AdminNutriCard = ({
       dispatch(getAdminNutriData());
     }
   }, []);
-  console.log(nutriData);
+
   return (
     <div>
       <Box
@@ -147,9 +147,9 @@ const AdminNutriCard = ({
 
           <Flex justify="space-between" mt="4">
             <Text fontWeight="bold" fontSize="lg" color="gray.800">
-              SS
+              ServingSize
             </Text>
-            <Text fontSize="lg">{ss}</Text>
+            <Text fontSize="lg">{servingsize}</Text>
           </Flex>
 
           <Flex justify="space-between" mt="4">
@@ -160,7 +160,7 @@ const AdminNutriCard = ({
         </Box>
         <Stack direction={"row"} spacing={4} p={"6"}>
           <Button
-            onClick={() => handleClick(id, onOpen)}
+            onClick={() => handleClick(_id, onOpen)}
             flex={1}
             fontSize={"sm"}
             rounded={"full"}
@@ -176,7 +176,7 @@ const AdminNutriCard = ({
             Update
           </Button>
           <Button
-            onClick={() => handleDelete(id)}
+            onClick={() => handleDelete(_id)}
             flex={1}
             fontSize={"sm"}
             rounded={"full"}
@@ -261,9 +261,9 @@ const AdminNutriCard = ({
                 />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>SS</FormLabel>
+                <FormLabel>ServingSize</FormLabel>
                 <Select
-                  value={currentProduct.ss}
+                  value={currentProduct.servingsize}
                   name="ss"
                   onChange={handleChange}
                 >
