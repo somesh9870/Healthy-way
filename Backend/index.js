@@ -23,11 +23,11 @@ app.use(
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
-app.use("/nutrient", nutriRouter);
+app.use("/nutrient", nutriRouter);   // to get all data
 
 // to make relationship between users and data
 app.use(auth)
-app.use("/userdata", userDataRouter);
+app.use("/userdata", userDataRouter);    // dashboard and diary -- with token
 
 // listening to server --
 app.listen(process.env.port, async () => {

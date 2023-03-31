@@ -112,7 +112,6 @@ userRouter.post("/login", async (req, res) => {
   try {
     // Finding the existing user
     const user = await UserModel.find({ email: email });
-    console.log(user)
 
     if (user.length > 0) {
       // comparing the password with the existing user password
