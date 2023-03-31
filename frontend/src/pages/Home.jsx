@@ -11,6 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import Footer from "../components/Home.footer";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
@@ -52,10 +53,11 @@ const Home = () => {
             <br />
             <br />
             <Button
-              href={"#"}
+              as={"a"}
               fontSize={"2xl"}
               p={"30px 45px 30px 45px"}
               bg={"#44d07b"}
+              href={"/signup"}
               _hover={{
                 bg: "#44d07b",
                 boxShadow: "dark-lg",
@@ -320,8 +322,9 @@ const Home = () => {
             with our food diary app.
           </Text>
           <Button
+            as={"a"}
             mt={"30px"}
-            href={"#"}
+            href={"/signup"}
             fontSize={"2xl"}
             p={"30px 45px 30px 45px"}
             bg={"#44d07b"}
@@ -342,8 +345,15 @@ const Home = () => {
           w="50%"
           src="https://cdn1.cronometer.com/webflow/cronometer-devices-3-p-1600.png"
         ></Image>
-        <Box h={"85vh"} bgColor="#f0f2fa">
-          <Text mt={"150px"} fontSize={"4xl"} fontWeight="800">
+        <Box
+          h={"80vh"}
+          mt={"150px"}
+          bgColor="#f0f2fa"
+          display={"flex"}
+          flexDirection="column"
+          justifyContent={"space-evenly"}
+        >
+          <Text fontSize={"4xl"} fontWeight="800">
             Healthy Way reviews
           </Text>
           <Box textAlign={"start"}>
@@ -405,8 +415,9 @@ const Home = () => {
               </Box>
               <Box>
                 <Text color={"#005c5c"} fontSize="xl" fontWeight="700">
-                  Whether that's bodybuilding, weight <br /> loss, endurance training,
-                  or just <br /> maintenance – everyone should be <br /> using Cronometer.
+                  Whether that's bodybuilding, weight <br /> loss, endurance
+                  training, or just <br /> maintenance – everyone should be{" "}
+                  <br /> using Cronometer.
                 </Text>
                 <Image
                   m={"auto"}
@@ -418,7 +429,59 @@ const Home = () => {
             </HStack>
           </Box>
         </Box>
+        <Grid
+          w={"65%"}
+          margin={"auto"}
+          mt={"100px"}
+          gridTemplateColumns={{
+            base: "repeat(1,1fr)",
+            md: "repeat(2,1fr)",
+            lg: "repeat(2,1fr)",
+          }}
+          gap={20}
+          align="center"
+        >
+          <GridItem>
+            <VStack mt={"60px"}>
+              <Text fontSize={"5xl"} fontWeight="700">
+                Healthy Way <span style={{ color: "#44d07b" }}>Pro</span>
+              </Text>
+              <Text fontSize={"2xl"} fontWeight="500">
+                For Health Professionals
+              </Text>
+              <Text pb={"20px"} fontSize={"17px"}>
+                Client diet management for nutritionists, dietitians, research{" "}
+                <br /> teams, schools, and hospitals.
+              </Text>
+              <Button
+                _hover={{
+                  bgColor: "white",
+                  boxShadow: "md",
+                }}
+                bgColor={"white"}
+                border="1px"
+                size={"lg"}
+              >
+                Learn About Pro
+              </Button>
+            </VStack>
+          </GridItem>{" "}
+          <GridItem>
+            <Image
+              h={"95%"}
+              src="https://cdn1.cronometer.com/webflow/pro-hero-1-1.png"
+            ></Image>
+          </GridItem>
+        </Grid>
+        <hr style={{ width: "65%", margin: "auto", marginTop: "30px" }} />
+        <Text fontSize={"xl"} mt={"50px"}>
+          Help us spread the good word about nutrition.
+        </Text>
+        <Link color={"#44d07b"} textDecoration="underline">
+          Become and Affiliate
+        </Link>
       </Box>
+      <Footer />
     </div>
   );
 };

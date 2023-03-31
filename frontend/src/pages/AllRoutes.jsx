@@ -6,12 +6,16 @@ import AdminUser from "./Admin/AdminUser";
 import AdminNutriData from "./Admin/AdminNutriData";
 import AdminAddNutridata from "./Admin/AdminAddNutridata";
 import AdminHome from "./Admin/AdminHome";
+import Login from './User.login';
+import Signup from './signup';
 
 const AllRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/login" element={<Admin />} />
         <Route path="/admin/users" element={<AdminUser />} />
