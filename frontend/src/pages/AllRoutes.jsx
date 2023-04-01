@@ -7,19 +7,17 @@ import AdminNutriData from "./Admin/AdminNutriData";
 import AdminAddNutridata from "./Admin/AdminAddNutridata";
 import AdminHome from "./Admin/AdminHome";
 
-import Login from './User.login';
-import Signup from './signup';
-import Dashboard from './Dashboard';
-import Diary from './Diary';
-import VerifyOTP from './verifyOTP';
+import Login from "./User.login";
+import Signup from "./signup";
+import Dashboard from "./Dashboard";
+import Diary from "./Diary";
+import VerifyOTP from "./verifyOTP";
 import Support from "./Support/Support";
 import Blog from "./Blog/Blog";
-import About from './About/About';
-
-
-
-
-
+import About from "./About/About";
+import AdminUsersNutriData from "./Admin/AdminUsersNutriData";
+import Plans from "./Plans";
+import PageNotFound from "./PageNotFound";
 
 const AllRoutes = () => {
   return (
@@ -40,6 +38,8 @@ const AllRoutes = () => {
         <Route path="/admin/nutridata/add" element={<AdminAddNutridata />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/diary" element={<Diary />} />
+        <Route path="/plans" element={<Plans />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
