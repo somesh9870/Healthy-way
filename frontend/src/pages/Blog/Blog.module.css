@@ -1,0 +1,16 @@
+.gridItems {
+    /* width: 100%; */
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.heading {
+    background-image: url("https://cronometer.com/blog/wp-content/uploads/2022/11/pattern.png");
+    /* top 0% right 10%; */
+    /* background-size: 500px; */
+    background-color: #262a3b;
+    background-repeat: no-repeat;
+}

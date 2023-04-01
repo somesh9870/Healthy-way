@@ -4,12 +4,11 @@ const initialState = {
   isLoading: false,
   isError: false,
   users: [],
-  isAuth: false,
+  isAuth: localStorage.getItem("adminName") ? true : false,
   nutriData: [],
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
-
   switch (type) {
     case types.ADMIN_LOADING:
       return {
@@ -22,6 +21,16 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         isError: true,
         isLoading: false,
+      };
+
+    case types.ADMIN_AUTH:
+      return {
+        ...state,
+      };
+    case types.ADMIN_AUTH_LOGOUT:
+      return {
+        ...state,
+        isAuth: false,
       };
 
     case types.ADMIN_GETUSERS:
@@ -113,6 +122,11 @@ export const reducer = (state = initialState, { type, payload }) => {
         nutriData: state.nutriData.map((item) =>
           item._id === payload._id ? payload : item
         ),
+      };
+    case types.ADMIN_SINGLE_USER_NUTRIDATA:
+      return {
+        ...state,
+        nutriData: payload,
       };
 
     default:
