@@ -9,10 +9,11 @@ import AdminHome from "./Admin/AdminHome";
 
 import Login from './User.login';
 import Signup from './signup';
-import AdminUsersNutriData from "./Admin/AdminUsersNutriData";
+import VerifyOTP from './verifyOTP';
 import Support from "./Support/Support";
 import Blog from "./Blog/Blog";
 import About from './About/About';
+
 
 
 
@@ -24,6 +25,7 @@ const AllRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/verify-otp" element={<VerifyOTP />} />
         <Route path="/support" element={<Support />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
