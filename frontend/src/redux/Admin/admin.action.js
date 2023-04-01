@@ -1,6 +1,7 @@
 import {
   ADMIN_ADD_NUTRIDATA_ERROR,
   ADMIN_ADD_NUTRIDATA_LOADING,
+  ADMIN_AUTH_LOGOUT,
   ADMIN_DELETEUSRS,
   ADMIN_DELETE_ERROR,
   ADMIN_DELETE_LOADING,
@@ -11,6 +12,7 @@ import {
   ADMIN_NUTRIDATA,
   ADMIN_NUTRIDATA_ERROR,
   ADMIN_NUTRIDATA_LOADING,
+  ADMIN_SINGLE_USER_NUTRIDATA,
   ADMIN_UPDATE_NUTRIDATA,
   ADMIN_UPDATE_NUTRIDATA_ERROR,
   ADMIN_UPDATE_NUTRIDATA_LOADING,
@@ -21,6 +23,7 @@ import {
   deleteUser,
   getnutriData,
   getUsers,
+  singleUserNutridata,
   updateNutriData,
 } from "./admin.api";
 
@@ -40,6 +43,7 @@ export const deleteAdminUser = (userId) => async (dispatch) => {
   dispatch({ type: ADMIN_DELETE_LOADING });
   try {
     let res = await deleteUser(userId);
+
     dispatch({ type: ADMIN_DELETEUSRS, payload: userId });
   } catch (error) {
     dispatch({ type: ADMIN_DELETE_ERROR });
@@ -89,4 +93,19 @@ export const updateAdminNutriData = (nutriId, data) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: ADMIN_UPDATE_NUTRIDATA_ERROR });
   }
+};
+
+export const AdminSingleUserNutriData = (userId) => async (dispatch) => {
+  console.log(userId);
+  dispatch({ type: ADMIN_LOADING });
+  try {
+    let res = await singleUserNutridata(userId);
+    dispatch({ type: ADMIN_SINGLE_USER_NUTRIDATA, payload: res });
+  } catch (error) {
+    dispatch({ type: ADMIN_ERROR });
+  }
+};
+
+export const AdminLogut = () => (dispatch) => {
+  dispatch({ type: ADMIN_AUTH_LOGOUT, payload: false });
 };

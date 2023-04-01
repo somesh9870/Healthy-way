@@ -34,7 +34,6 @@ const AdminNutriData = () => {
         }}
         gap={{ base: "10", md: "10", xl: "15" }}
       >
-        {" "}
         {nutriData.map((item) => (
           <>
             <AdminNutriCard key={item._id} {...item} />

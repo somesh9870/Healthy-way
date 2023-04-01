@@ -278,11 +278,11 @@ const NAV_ITEMS = [
   },
   {
     label: "Support",
-    href: "#",
+    href: "/support",
   },
   {
     label: "Blog",
-    href: "#",
+    href: "/blog",
   },
   {
     label: "Forums",
@@ -290,6 +290,6 @@ const NAV_ITEMS = [
   },
   {
     label: "About",
-    href: "#",
+    href: "/about",
   },
 ];

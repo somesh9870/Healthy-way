@@ -20,6 +20,7 @@ import axios from "axios";
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -44,6 +45,7 @@ const AdminLogin = () => {
           duration: 3000,
           isClosable: true,
         });
+        localStorage.setItem("adminName", name);
         navigate("/admin");
       }
     } catch (error) {
@@ -55,6 +57,10 @@ const AdminLogin = () => {
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
+          <FormControl id="name">
+            <FormLabel>Name</FormLabel>
+            <Input type="text" onChange={(e) => setName(e.target.value)} />
+          </FormControl>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
             <Input type="email" onChange={(e) => setEmail(e.target.value)} />
