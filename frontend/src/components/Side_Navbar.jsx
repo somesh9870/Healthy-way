@@ -7,7 +7,7 @@ import {BiDollarCircle, BiHelpCircle} from "react-icons/bi";
 import {AiOutlineBarChart} from "react-icons/ai";
 import {FaAppleAlt} from "react-icons/fa";
 import NavItem from './Nav_Item'
-import Logo from "../Assets/HealthyWay_Logo.png";
+import Logo from "../assets/HealthyWay_Logo.png";
 
 export default function Sidebar() {
     const [navSize, changeNavSize] = useState("small")

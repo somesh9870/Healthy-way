@@ -8,6 +8,8 @@ import AdminAddNutridata from "./Admin/AdminAddNutridata";
 import AdminHome from "./Admin/AdminHome";
 import Login from './User.login';
 import Signup from './signup';
+import Dashboard from './Dashboard';
+import Diary from './Diary';
 
 const AllRoutes = () => {
   return (
@@ -21,6 +23,8 @@ const AllRoutes = () => {
         <Route path="/admin/users" element={<AdminUser />} />
         <Route path="/admin/nutridata" element={<AdminNutriData />} />
         <Route path="/admin/nutridata/add" element={<AdminAddNutridata />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/diary" element={<Diary />} />
       </Routes>
     </div>
   );
