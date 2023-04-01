@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Admin from "./Admin/AdminLogin";
 import Home from "./Home";
@@ -6,8 +6,8 @@ import AdminUser from "./Admin/AdminUser";
 import AdminNutriData from "./Admin/AdminNutriData";
 import AdminAddNutridata from "./Admin/AdminAddNutridata";
 import AdminHome from "./Admin/AdminHome";
-import Login from './User.login';
-import Signup from './signup';
+import Login from "./User.login";
+import Signup from "./signup";
 
 const AllRoutes = () => {
   return (
@@ -26,4 +26,4 @@ const AllRoutes = () => {
   );
 };
 
-export default AllRoutes
+export default AllRoutes;
