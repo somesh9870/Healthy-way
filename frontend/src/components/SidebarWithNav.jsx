@@ -36,8 +36,10 @@ import { MdOutlineEmojiFoodBeverage } from "react-icons/md";
 import { AiOutlineLogin } from "react-icons/ai";
 import { MdOutlineAdd } from "react-icons/md";
 import { ReactText } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import Logo from "../assets/HealthyWay_Logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { AdminLogut } from "../redux/Admin/admin.action";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, path: "" },
@@ -52,6 +54,9 @@ const LinkItems = [
 ];
 const SidebarWithNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isAuth } = useSelector((store) => store.admin);
+
+  console.log(isAuth);
   return (
     <div>
       <Box bg={useColorModeValue("gray.100", "gray.900")}>
@@ -148,6 +153,13 @@ const NavItem = ({ icon, name, path, children, ...rest }) => {
   );
 };
 const MobileNav = ({ onOpen, ...rest }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    localStorage.removeItem("adminName");
+    dispatch(AdminLogut());
+    navigate("/admin/login");
+  };
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -204,7 +216,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{localStorage.getItem("adminName")}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -222,7 +234,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               <MenuItem>Settings</MenuItem>
               <MenuItem>Billing</MenuItem>
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem onClick={handleLogout}>Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

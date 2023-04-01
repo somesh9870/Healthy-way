@@ -3,6 +3,9 @@ export const ADMIN_ERROR = "admin/error";
 export const ADMIN_DELETE_ERROR = "admin/delete/error";
 export const ADMIN_DELETE_LOADING = "admin/delete/loading";
 
+// AdminAuth
+
+
 // Users
 export const ADMIN_AUTH = "admin/auth";
 export const ADMIN_GETUSERS = "admin/getusers";
@@ -23,6 +26,10 @@ export const ADMIN_ADD_NUTRIDATA_ERROR = "admin/addnutridata/error";
 export const ADMIN_UPDATE_NUTRIDATA = "admin/update/nutridata";
 export const ADMIN_UPDATE_NUTRIDATA_LOADING = "admin/update/nutridata/loading";
 export const ADMIN_UPDATE_NUTRIDATA_ERROR = "admin/update/nutridata/error";
+
+// SIngleUser NutriData
+export const ADMIN_SINGLE_USER_NUTRIDATA = "admin/singleuser/nutridata"
+export const ADMIN_AUTH_LOGOUT = "admin/logout"
 
 
 

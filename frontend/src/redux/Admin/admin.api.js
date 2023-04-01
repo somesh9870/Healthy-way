@@ -7,7 +7,7 @@ export const getUsers = async () => {
 
 export const deleteUser = async (userId) => {
   let res = await axios.delete(
-    `https://panicky-crow-cardigan.cyclic.app/users/${userId}`
+    `https://panicky-crow-cardigan.cyclic.app/users/delete/${userId}`
   );
   return res;
 };
@@ -53,6 +53,14 @@ export const updateNutriData = async (nutriId, data) => {
         Authorization: `${localStorage.getItem("adminToken")}`,
       },
     }
+  );
+
+  return res.data;
+};
+
+export const singleUserNutridata = async (userId) => {
+  let res = await axios.get(
+    `https://panicky-crow-cardigan.cyclic.app/users/${userId}`
   );
 
   return res.data;

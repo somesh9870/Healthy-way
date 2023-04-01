@@ -1,13 +1,10 @@
 import React from "react";
 import {
-
   Avatar,
   Box,
-
   Text,
   Stack,
   Button,
-
   Badge,
   useColorModeValue,
   List,
@@ -16,6 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { deleteAdminUser } from "../redux/Admin/admin.action";
+
+import { Link } from "react-router-dom";
 
 const AdminUsercard = ({
   _id,
@@ -108,21 +107,24 @@ const AdminUsercard = ({
         </List>
 
         <Stack mt={8} direction={"row"} spacing={4}>
-          <Button
-            flex={1}
-            fontSize={"sm"}
-            rounded={"full"}
-            bg={"teal.400"}
-            color={"white"}
-            _focus={{
-              bg: "teal.400",
-            }}
-            _hover={{
-              bg: "teal.600",
-            }}
-          >
-            See Data
-          </Button>
+          <Link to={`/admin/users/${_id}`}>
+            <Button
+              flex={1}
+              fontSize={"sm"}
+              rounded={"full"}
+              bg={"teal.400"}
+              color={"white"}
+              _focus={{
+                bg: "teal.400",
+              }}
+              _hover={{
+                bg: "teal.600",
+              }}
+            >
+              See Data
+            </Button>
+          </Link>
+
           <Button
             onClick={() => handleDelete(_id)}
             flex={1}
