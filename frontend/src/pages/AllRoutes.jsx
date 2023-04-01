@@ -8,6 +8,7 @@ import AdminAddNutridata from "./Admin/AdminAddNutridata";
 import AdminHome from "./Admin/AdminHome";
 import Login from './User.login';
 import Signup from './signup';
+import VerifyOTP from './verifyOTP';
 
 const AllRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AllRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/verify-otp" element={<VerifyOTP />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/login" element={<Admin />} />
         <Route path="/admin/users" element={<AdminUser />} />
