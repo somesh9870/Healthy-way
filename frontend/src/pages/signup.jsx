@@ -147,7 +147,7 @@ const Signup = () => {
         bgPosition={"right bottom"}
       >
         <Box>
-          <Box w="41%" m={"auto"}>
+          <Box w={{base:"100%",md:"80%",lg:"41%"}} m={"auto"}>
             <Heading
               size={"lg"}
               fontWeight="700"
@@ -169,12 +169,12 @@ const Signup = () => {
                 <Box
                   w={"100%"}
                   m={"auto"}
-                  p={10}
+                  p={{base:"4",md:"10",lg:"10"}}
                   bgColor={"white"}
                   boxShadow={"md"}
                   borderRadius={"8px"}
                 >
-                  <HStack justifyContent={"space-between"} w={"90%"}>
+                  <HStack justifyContent={"space-between"} w="90%">
                     <Text fontSize={"xl"} fontWeight={"500"}>
                       Email
                     </Text>
@@ -230,7 +230,7 @@ const Signup = () => {
                   fontSize="16px"
                   fontWeight={"medium"}
                   boxShadow="lg"
-                  p={10}
+                  p={{base:"0",md:"10",lg:"10"}}
                 >
                   <Box
                     display={"flex"}
@@ -276,7 +276,7 @@ const Signup = () => {
                     </HStack>
                     <HStack
                       justifyContent={"space-between"}
-                      w={"80%"}
+                      w={{base:"90%",md:"80%",lg:"80%"}}
                       mt={"12px"}
                     >
                       <Text fontSize={"xl"} fontWeight={"500"}>
@@ -295,6 +295,7 @@ const Signup = () => {
                       w={"80%"}
                       mt={"12px"}
                       alignItems={"end"}
+                      
                     >
                       <Text fontSize={"xl"} fontWeight={"500"}>
                         Height
@@ -302,7 +303,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>ft</FormLabel>
                         <Select
-                          w={"90px"}
+                         w={{base:"45px",md:"90px",lg:"90px"}}
                           size={"md"}
                           type="number"
                           name="ft"
@@ -322,7 +323,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>in</FormLabel>
                         <Select
-                          w={"90px"}
+                          w={{base:"45px",md:"90px",lg:"90px"}}
                           size={"md"}
                           type="number"
                           name="in"
@@ -347,7 +348,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>cm</FormLabel>
                         <Input
-                          w={"90px"}
+                          w={{base:"45px",md:"90px",lg:"90px"}}
                           type={"number"}
                           onChange={Targetvalue}
                           size={"md"}
@@ -367,7 +368,7 @@ const Signup = () => {
                       <HStack>
                         <Input
                           type={"number"}
-                          w="120px"
+                          w={{base:"70px",md:"120px",lg:"120px"}}
                           size={"md"}
                           name="weight"
                           onChange={Targetvalue}
@@ -375,7 +376,7 @@ const Signup = () => {
                         <Select
                           size={"md"}
                           placeContent="select"
-                          w="170px"
+                          w={{base:"80px",md:"170px",lg:"170px"}}
                           onChange={Targetvalue}
                         >
                           <option value="kg"> Kilograms</option>
