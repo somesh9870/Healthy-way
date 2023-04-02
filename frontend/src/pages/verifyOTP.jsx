@@ -3,14 +3,47 @@ import {
   Button,
   FormControl,
   Flex,
-  Input,
   Stack,
   useColorModeValue,
   HStack,
+  useToast,
 } from "@chakra-ui/react";
+
 import { PinInput, PinInputField } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function VerifyOTP() {
+  const toast = useToast();
+  const navigate = useNavigate();
+  const [otp, setOTP] = useState();
+
+  const verify = async (e) => {
+    e.preventDefault();
+    let OTP = Number(otp);
+    let info = JSON.parse(localStorage.getItem("info"));
+    if(info.otp === OTP){
+
+      navigate("/login");
+    }
+    if (info.otp === OTP) {
+      toast({
+        title: "Welcome to Healthy Way",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate("/login");
+    }else{
+      toast({
+        title: "Please enter correct OTP",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+
+  };
   return (
     <>
       <HStack bgColor={"#262a3b"} h={"90px"}>
@@ -46,7 +79,7 @@ export default function VerifyOTP() {
           <FormControl>
             <Center>
               <HStack>
-                <PinInput>
+                <PinInput otp size={"lg"} mask onComplete={(e) => setOTP(e)}>
                   <PinInputField />
                   <PinInputField />
                   <PinInputField />
@@ -57,6 +90,7 @@ export default function VerifyOTP() {
           </FormControl>
           <Stack spacing={6}>
             <Button
+              onClick={verify}
               bg={"#005c5c"}
               color={"white"}
               _hover={{

@@ -17,10 +17,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+let heightvalue = 0;
+
 const Signup = () => {
   const [checkedItems, setCheckedItems] = React.useState([false, false, false]);
   const [isDisableds, setDisables] = useState(false);
   const [form, setform] = useState({});
+
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -28,44 +31,99 @@ const Signup = () => {
 
   const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
   const Targetvalue = (e) => {
-    const { name, value } = e.target;
-    setform({
-      ...form,
-      [name]: value,
-    });
+    let { name, value } = e.target;
+    if (name === "weight") {
+      value = Number(value);
+    }
+    if (name === "height") {
+      value = Number(value);
+    }
+    if (name === "birthday") {
+      value = new Date(value);
+    }
+    if (name === "ft") {
+      value = Number(value);
+      heightvalue += value * 12;
+      heightvalue *= 2.54;
+    }
+    if (name === "in") {
+      value = Number(value);
+      heightvalue += value * 2.54;
+    }
+    if (heightvalue > 0) {
+      setform({
+        ...form,
+        [name]: value,
+        height: heightvalue,
+      });
+    } else {
+      setform({
+        ...form,
+        [name]: value,
+      });
+    }
   };
 
   const handlesignup = async (e) => {
     e.preventDefault();
-    console.log(form, "form");
-    const res = await axios.post(
-      process.env.signupURL,
-      form
-    );
+    console.log(form);
+    const res = await axios.post("https://panicky-crow-cardigan.cyclic.app/users/signup",form);
     const data = res.data;
-    const flag = 1;
-    if (data.status === "error" || data.password !== data.confirmpass) {
+    console.log(res)
+
+    if (res.status === "error") {
       toast({
-        title: "signup failed",
+        title: "Signup failed",
         description: res.message,
         status: "error",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
-      flag = 0;
     }
-    if (flag) {
+    if (data.password !== data.confirmpass) {
       toast({
-        title: "signup successful",
-        description: "Your Profile has been creatd on Loseit",
-        status: "success",
-        duration: 5000,
+        title: "Passwords must be same",
+        description: res.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    if (data === "Email already exists") {
+      toast({
+        title: "Email already exists, please login",
+        description: res.message,
+        status: "error",
+        duration: 3000,
         isClosable: true,
       });
       navigate("/login");
     }
+    if (data.status === 500) {
+      toast({
+        title: "Please enter valid email",
+        description: res.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    if (res.status === 200) {
+      toast({
+        title: "Verify OTP sent to your mail",
+        description: "Your Profile has been creatd on Loseit",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      let info=form
+      let otp=res.data.otp
+      info.otp=otp;
+      localStorage.setItem("info",JSON.stringify(info))
+      navigate("/verify-otp");
+    }
   };
-  // console.log(form)
+
   useEffect(() => {
     if (allChecked) {
       setDisables(!isDisableds);
@@ -153,8 +211,8 @@ const Signup = () => {
                       w={"60%"}
                       type="password"
                       placeholder=" Confirm password "
-                      name="confirmpassword"
-                      onChange={Targetvalue}
+                      
+           
                     />
                   </HStack>
                 </Box>
@@ -222,11 +280,11 @@ const Signup = () => {
                         Birthday
                       </Text>
                       <Input
-                      w={"60%"}
-                          type={"date"}
-                          onChange={Targetvalue}
-                          name="date"
-                        />
+                        w={"60%"}
+                        type={"date"}
+                        onChange={Targetvalue}
+                        name="birthday"
+                      />
                     </HStack>
 
                     <HStack
@@ -239,51 +297,63 @@ const Signup = () => {
                         Height
                       </Text>
                       <Box>
-                      <FormLabel fontSize={"13px"}>ft</FormLabel>
-                      <Select
-                      w={"90px"}
-                        size={"md"}
-                        onChange={Targetvalue}
-                      >
-                        <option value="1">1</option>
-                        <option value="2"> 2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5"> 5</option>
-                        <option value="6">6</option>
-                      </Select>
+                        <FormLabel fontSize={"13px"}>ft</FormLabel>
+                        <Select
+                          w={"90px"}
+                          size={"md"}
+                          type="number"
+                          name="ft"
+                          onChange={Targetvalue}
+                        >
+                          <option value="1">1</option>
+                          <option value="2"> 2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5"> 5</option>
+                          <option value="6">6</option>
+                          <option value="7"> 7</option>
+                          <option value="8">8</option>
+                        </Select>
                       </Box>
 
                       <Box>
-                      <FormLabel fontSize={"13px"}>in</FormLabel>
-                      <Select w={"90px"} size={"md"} onChange={Targetvalue}>
-                        <option value="1">1</option>
-                        <option value="2"> 2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5"> 5</option>
-                        <option value="6">6</option>
-                      </Select>
+                        <FormLabel fontSize={"13px"}>in</FormLabel>
+                        <Select
+                          w={"90px"}
+                          size={"md"}
+                          type="number"
+                          name="in"
+                          onChange={Targetvalue}
+                        >
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2"> 2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5"> 5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                        </Select>
                       </Box>
                       <Text>or</Text>
 
                       <Box>
-                      <FormLabel fontSize={"13px"}>cm</FormLabel>
-                      <Input
-                      w={"90px"}
-                        type={"number"}
-                        onChange={Targetvalue}
-                        size={"md"}
-                        name="Height"
-                      />
+                        <FormLabel fontSize={"13px"}>cm</FormLabel>
+                        <Input
+                          w={"90px"}
+                          type={"number"}
+                          onChange={Targetvalue}
+                          size={"md"}
+                          name="height"
+                        />
                       </Box>
-                     
-                     
-                     
                     </HStack>
 
                     <HStack
-                    
                       justifyContent={"space-between"}
                       w={"80%"}
                       mt={"12px"}
@@ -291,27 +361,25 @@ const Signup = () => {
                       <Text fontSize={"xl"} fontWeight={"500"}>
                         Weight
                       </Text>
-                     <HStack>
-                     <Input
-                        type={"number"}
-                        w="120px"
-                        size={"md"}
-                        name="weight"
-                        onChange={Targetvalue}
-                      />
-                      <Select
-                        size={"md"}
-                        placeContent="select"
-                        w="170px"
-                        onChange={Targetvalue}
-                        name="weight"
-                      >
-                        <option value="kg"> Kilograms</option>
-                        <option value="Pounds">Pounds</option>
-                      </Select>
-                     </HStack>
+                      <HStack>
+                        <Input
+                          type={"number"}
+                          w="120px"
+                          size={"md"}
+                          name="weight"
+                          onChange={Targetvalue}
+                        />
+                        <Select
+                          size={"md"}
+                          placeContent="select"
+                          w="170px"
+                          onChange={Targetvalue}
+                        >
+                          <option value="kg"> Kilograms</option>
+                          <option value="Pounds">Pounds</option>
+                        </Select>
+                      </HStack>
                     </HStack>
-                    
                   </Box>
                 </Box>
 
@@ -325,8 +393,10 @@ const Signup = () => {
                   boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
                 >
                   <Text
-                  fontWeight={"700"}
-                    fontSize={"22px"} mb={"15px"} textAlign={"center"}
+                    fontWeight={"700"}
+                    fontSize={"22px"}
+                    mb={"15px"}
+                    textAlign={"center"}
                   >
                     {" "}
                     Terms of Service & Privacy Settings
@@ -407,7 +477,7 @@ const Signup = () => {
                 </Box>
                 {!isDisableds ? (
                   <Input
-                  value={"Sign Up"}
+                    value={"Sign Up"}
                     type={"submit"}
                     w={"25%"}
                     p={"7px"}

@@ -46,7 +46,7 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function Footer() {
   return (
-    <Box h={"450px"} bg={"#262a3b"} color={"white"} mt={"50px"}>
+    <Box bg={"#262a3b"} color={"white"} mt={"50px"}>
       <Container as={Stack} maxW={"6xl"} py={10} pt="100px">
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>

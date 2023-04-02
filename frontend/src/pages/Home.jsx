@@ -20,19 +20,22 @@ const Home = () => {
       <Navbar />
       <Box
         bgImage={"https://cdn1.cronometer.com/webflow/dot-pattern.svg"}
-        mt="50px"
+        mt={{base:"-50px",md:"0px",lg:"50px"}}
         pt={"30px"}
-        h="535px"
+        minH="535px"
         bgRepeat={"no-repeat"}
         bgPosition="right"
       >
         <Grid
-          w={"67%"}
-          h="80%"
+          w={{
+            base: "90%",
+            md: "75%",
+            lg: "70%",
+          }}
           margin={"auto"}
           gridTemplateColumns={{
             base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
+            md: "repeat(1,1fr)",
             lg: "repeat(2,1fr)",
           }}
           gap={20}
@@ -68,10 +71,10 @@ const Home = () => {
           </GridItem>
           <GridItem pt={"20px"}>
             <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/2QOpxmdgh9c"
-              title="Luffy returns to Marineford to send a crazy message to the world"
+              width="110%"
+              height="121%"
+              src="https://www.youtube.com/embed/c06dTj0v0sM"
+              title="Nutrition for a Healthy Life"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
@@ -79,12 +82,22 @@ const Home = () => {
           </GridItem>
         </Grid>
       </Box>
-      <Box w={"100%"} mt="20px" bgColor={"#f0f2fa"} pt={"30px"} pb={"20px"}>
+      <Box
+        w={"100%"}
+        mt={{
+          base: "65px",
+          md: "65px",
+          lg: "25px",
+        }}
+        bgColor={"#f0f2fa"}
+        pt={"30px"}
+        pb={"20px"}
+      >
         <Text fontSize={"xl"} textAlign="center">
           As Seen On
         </Text>
         <Flex
-          w={["90%", "90%", "70%", "70%"]}
+          w={["90%", "67%", "67%"]}
           m="auto"
           justifyContent="space-between"
           mt="20px"
@@ -250,11 +263,15 @@ const Home = () => {
         </Text>
         <Grid
           pt={"50px"}
-          w={"67%"}
+          w={{
+            base: "90%",
+            md: "70%",
+            lg: "67%",
+          }}
           margin={"auto"}
           gridTemplateColumns={{
             base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
+            md: "repeat(1,1fr)",
             lg: "repeat(2,1fr)",
           }}
           gap={20}
@@ -262,7 +279,11 @@ const Home = () => {
         >
           <GridItem>
             <Image
-              h={"100%"}
+              h={{
+                base: "160%",
+                md: "100%",
+                lg: "100%",
+              }}
               src="https://cdn1.cronometer.com/webflow/crono-hero-img-22x-1.png"
             ></Image>
           </GridItem>
@@ -316,7 +337,13 @@ const Home = () => {
             </VStack>
           </GridItem>
         </Grid>
-        <Box h={"230px"} mt="200px" bgColor={"#262a3b"} pt="35px">
+        <Box
+          h={"230px"}
+          mt="200px"
+          bgColor={"#262a3b"}
+          pt="35px"
+          
+        >
           <Text color={"white"} fontSize={"21px"}>
             Find out if you're getting the vitamins and minerals you need <br />{" "}
             with our food diary app.
@@ -342,26 +369,52 @@ const Home = () => {
         <Image
           m="auto"
           mt={"30px"}
-          w="50%"
+          w={{
+            base: "95%",
+            md: "80%",
+            lg: "50%",
+          }}
           src="https://cdn1.cronometer.com/webflow/cronometer-devices-3-p-1600.png"
         ></Image>
         <Box
-          h={"80vh"}
-          mt={"150px"}
+          pb={"50px"}
+          mt={{
+            base: "170px",
+            md: "150px",
+            lg: "150px",
+          }}
           bgColor="#f0f2fa"
           display={"flex"}
           flexDirection="column"
           justifyContent={"space-evenly"}
         >
-          <Text fontSize={"4xl"} fontWeight="800">
+          <Text
+            pb={"40px"}
+            fontSize={"4xl"}
+            fontWeight="800"
+            mt={{
+              base: "70px",
+              md: "40px",
+              lg: "none",
+            }}
+          >
             Healthy Way reviews
           </Text>
           <Box textAlign={"start"}>
             <HStack
               bgColor={"white"}
-              w="57%"
+              w={{
+                base: "100%",
+                md: "87%",
+                lg: "60%",
+              }}
               m="auto"
               p="30px"
+              flexWrap={{
+                base: "wrap",
+                md: "wrap",
+                lg: "nowrap",
+              }}
               borderRadius={"6px"}
               boxShadow="sm"
               justifyContent={"space-around"}
@@ -391,8 +444,17 @@ const Home = () => {
             </HStack>
             <HStack
               bgColor={"white"}
-              w="57%"
+              w={{
+                base: "100%",
+                md: "87%",
+                lg: "60%",
+              }}
               m="auto"
+              flexWrap={{
+                base: "wrap",
+                md: "wrap",
+                lg: "nowrap",
+              }}
               mt="30px"
               p="30px"
               borderRadius={"6px"}
@@ -435,7 +497,7 @@ const Home = () => {
           mt={"100px"}
           gridTemplateColumns={{
             base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
+            md: "repeat(1,1fr)",
             lg: "repeat(2,1fr)",
           }}
           gap={20}
@@ -468,7 +530,11 @@ const Home = () => {
           </GridItem>{" "}
           <GridItem>
             <Image
-              h={"95%"}
+              h={{
+                base: "130%",
+                md: "110%",
+                lg: "95%",
+              }}
               src="https://cdn1.cronometer.com/webflow/pro-hero-1-1.png"
             ></Image>
           </GridItem>

@@ -27,8 +27,9 @@ const Login = () => {
       email,
       password
     }
-    let res = await axios.post(process.env.loginURL,credentials);
+    let res = await axios.post("https://panicky-crow-cardigan.cyclic.app/users/login",credentials);
     localStorage.setItem("userToken", res.data.token);
+    localStorage.setItem("userEmail", credentials.email);
 
     try {
       if (res.data.token) {
