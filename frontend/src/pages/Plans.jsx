@@ -5,13 +5,13 @@ import GiftSubscription from "../components/Plans/GoldPlanSubs";
 import ProfPlan from "../components/Plans/ProfPlan";
 import Enterprise from "../components/Plans/Enterprise";
 import FAQ from "../components/Plans/FAQ";
+import Sidebar from "../components/Side_Navbar";
 
 const Plans = () => {
   return (
     <>
-      {/* <SidebarContent   display={{ base: 'none', md: 'block' }}/> */}
-      <Box w={["100%", "100%", "80%"]} float={"right"} bg="#fffcf6">
-        {/* <MobileNav /> */}
+      <Sidebar />
+      <Box w={["90%", "90%", "90%"]} float={"right"} bg="#fffcf6">
         <Text
           fontSize={["l", "xl", "3xl"]}
           pt={"15px"}

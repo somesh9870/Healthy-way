@@ -17,6 +17,17 @@ import {
   Thead,
   Tr,
   UnorderedList,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormControl,
+  FormLabel,
+  Input,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
@@ -148,6 +159,8 @@ const data = [
 const GoldPlan = () => {
   const [changePrice, setChangePrice] = useState(false);
   const [open, setOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const handleChangePrice = (state) => {
     setChangePrice(state);
@@ -155,6 +168,22 @@ const GoldPlan = () => {
 
   const handleOpen = () => {
     setOpen(!open);
+  };
+
+  const handleSubmit = () => {
+    // Handle payment logic here
+
+    // Show toast on successful payment
+    toast({
+      title: "Payment Successful",
+      description: "Thank you for subscribing!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+
+    // Close modal
+    onClose();
   };
 
   return (
@@ -262,6 +291,7 @@ const GoldPlan = () => {
             bg="#ff6733"
             color={"white"}
             fontSize={["10px", "13px", "17px"]}
+            onClick={onOpen}
           >
             SUBSCRIBE NOW
           </Button>
@@ -332,6 +362,41 @@ const GoldPlan = () => {
       ) : (
         <Box></Box>
       )}
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Subscribe to Our Service</ModalHeader>
+          <ModalBody>
+            <FormControl>
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" placeholder="Enter email" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Credit Card Number</FormLabel>
+              <Input type="text" placeholder="Enter card number" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Expiry Date</FormLabel>
+              <Input type="text" placeholder="MM / YY" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>CVC</FormLabel>
+              <Input type="text" placeholder="Enter CVC" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button onClick={handleSubmit}>Pay Now</Button>
+            <Button ml={4} onClick={onClose}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
