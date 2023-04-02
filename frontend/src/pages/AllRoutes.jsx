@@ -18,6 +18,7 @@ import About from "./About/About";
 import AdminUsersNutriData from "./Admin/AdminUsersNutriData";
 import Plans from "./Plans";
 import PageNotFound from "./PageNotFound";
+import { PrivateRoute } from "../components/PrivateRoute";
 
 const AllRoutes = () => {
   return (
@@ -36,9 +37,9 @@ const AllRoutes = () => {
         <Route path="/admin/users/:id" element={<AdminUsersNutriData />} />
         <Route path="/admin/nutridata" element={<AdminNutriData />} />
         <Route path="/admin/nutridata/add" element={<AdminAddNutridata />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/diary" element={<Diary />} />
-        <Route path="/plans" element={<Plans />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/diary" element={<PrivateRoute><Diary /></PrivateRoute>} />
+        <Route path="/plans" element={<PrivateRoute><Plans /></PrivateRoute>} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
