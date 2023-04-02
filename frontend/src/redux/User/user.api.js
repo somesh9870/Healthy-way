@@ -32,7 +32,7 @@ export const addDatadiary = async(data) => {
         }
     );
 
-    return res;
+    return res.data;
 }
 
 export const deleteDataDiary = async(userId) => {

@@ -19,6 +19,7 @@ export const getNutrientData = () => async (dispatch) => {
     try {
       let res = await getnutriData();
       dispatch({ type: types.GET_NUTRIENT_DATA, payload: res.data });
+      dispatch({ type: types.TOTAL_DATA });
     } catch (error) {
       dispatch(handleError);
     }
@@ -31,6 +32,7 @@ export const getUserData = () => async(dispatch) => {
     try {
         let res = await getuserData();
         dispatch({ type: types.GET_USER_DATA, payload: res.data });
+        dispatch({ type: types.TOTAL_DATA });
     } catch (error) {
         dispatch(handleError);
     }
@@ -42,7 +44,8 @@ export const addDataDiary = (data) => async(dispatch) => {
     dispatch(handleLoading);
     try {
         let res = await addDatadiary(data);
-        dispatch({ type: types.ADD_DATA_DIARY, payload: data });
+        dispatch({ type: types.ADD_DATA_DIARY, payload: res.data });
+        dispatch({ type: types.TOTAL_DATA });
     } catch (error) {
         dispatch(handleError);
     }
@@ -55,6 +58,7 @@ export const deleteDiaryData = (userId) => async(dispatch) => {
     try {
         let res = await deleteDataDiary(userId);
         dispatch({ type: types.DELETE_DATA_DIARY, payload: userId });
+        dispatch({ type: types.TOTAL_DATA });
     } catch (error) {
         dispatch(handleError);
     }

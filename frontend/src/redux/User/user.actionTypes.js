@@ -1,5 +1,6 @@
 export const LOADING = "loading";
 export const ERROR  = "ERROR";
+export const TOTAL_DATA = "totalNutriData";
 
 // To Get User Data for diary
 

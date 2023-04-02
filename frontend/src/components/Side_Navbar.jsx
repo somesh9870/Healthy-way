@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Flex, Text, IconButton, Divider, Heading, Image, Button } from '@chakra-ui/react'
+import { Flex, Text, IconButton, Divider, Heading, Image, Button, Avatar, Link, useToast } from '@chakra-ui/react'
 import { FiMenu, FiSettings, FiLogOut } from 'react-icons/fi'
 import {TbLayoutDashboard} from "react-icons/tb";
 import {BsFillJournalBookmarkFill, BsInfoCircle} from "react-icons/bs";
@@ -8,9 +8,25 @@ import {AiOutlineBarChart} from "react-icons/ai";
 import {FaAppleAlt} from "react-icons/fa";
 import NavItem from './Nav_Item'
 import Logo from "../assets/HealthyWay_Logo.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
-    const [navSize, changeNavSize] = useState("small")
+    const [navSize, changeNavSize] = useState("small");
+    const navigate = useNavigate();
+    const toast = useToast();
+
+    const handleLogout = () => {
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userEmail");
+        toast({
+            title: "Logout Successful.",
+            status: "success",
+            position: "top",
+            isClosable: true,
+        })
+        navigate("/");
+    };
+
     return (
         <>
             <Flex
@@ -52,12 +68,12 @@ export default function Sidebar() {
                     </Flex>
                     <Divider display={navSize == "small" ? "none" : "flex"} mb="5"/>
                     
-                    <NavItem navSize={navSize} icon={TbLayoutDashboard} title="Dashboard" description="This is the description for the dashboard." />
-                    <NavItem navSize={navSize} icon={BsFillJournalBookmarkFill} title="Diary" active/>
+                    <Link href='/dashboard' w="100%"><NavItem navSize={navSize} icon={TbLayoutDashboard} title="Dashboard" description="This is the description for the dashboard." /></Link>
+                    <Link href='/diary' w="100%"><NavItem navSize={navSize} icon={BsFillJournalBookmarkFill} title="Diary" active/></Link>
                     <NavItem navSize={navSize} icon={AiOutlineBarChart} title="Trends" />
                     <NavItem navSize={navSize} icon={FaAppleAlt} title="Foods" />
                     <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
-                    <NavItem navSize={navSize} icon={BiDollarCircle} title="Plans" />
+                    <Link href='/plans' w="100%"><NavItem navSize={navSize} icon={BiDollarCircle} title="Plans" /></Link>
                     <NavItem navSize={navSize} icon={BiHelpCircle} title="Help" />
                     <NavItem navSize={navSize} icon={BsInfoCircle} title="About" />
                 </Flex>
@@ -84,8 +100,12 @@ export default function Sidebar() {
                 </Flex>
             </Flex>
 
-            <Flex py="3" pr="5" justifyContent="flex-end" bgColor="#fafbff" boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" mb="5">
-                <Button  backgroundColor="#44d07b" color="#272a3a" _hover={{bgColor: "#3b3f4d", color:"#44d07b"}} gap="10px" fontSize="15px" size={{base: "xs", md: "sm", lg: "md"}}>
+            <Flex py="3" pr="5" justifyContent="flex-end" bgColor="#fafbff" boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" mb="5" gap="40px" alignItems="center">
+                <Flex alignItems="center" gap="10px">
+                    <Avatar name={localStorage.getItem("userMail")} size="sm" />
+                    <Text fontSize={{base: "10px", sm: "12px", md: "15px", lg: "16px"}} fontWeight="bold">{localStorage.getItem("userMail")}</Text>
+                </Flex>
+                <Button onClick={handleLogout} backgroundColor="#44d07b" color="#272a3a" _hover={{bgColor: "#3b3f4d", color:"#44d07b"}} gap="10px" fontSize="15px" size={{base: "xs", md: "sm", lg: "md"}}>
                     Logout<FiLogOut />
                 </Button>
             </Flex>
