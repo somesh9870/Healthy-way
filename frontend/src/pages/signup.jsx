@@ -9,6 +9,7 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Link,
   Stack,
   Text,
   useToast,
@@ -132,7 +133,9 @@ const Signup = () => {
   return (
     <>
       <HStack bgColor={"#262a3b"} h={"90px"}>
-        <Image ml={"30px"} h={"90px"} src="./Healthy way logo.png"></Image>
+      <Link href="/">
+        <Image ml={"30px"} h={"70px"} src="./HealthyWay_Logo.png"></Image>
+          </Link>
       </HStack>
       <Box
         bgImage={

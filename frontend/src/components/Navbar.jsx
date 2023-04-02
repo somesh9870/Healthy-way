@@ -60,7 +60,9 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <Link href="/">
           <Image src="./HealthyWay_Logo.png" h={{base:"100px",md:"80px",lg:"80px"}} w={{base:"250px",md:"200px",lg:"230px"}} fit="contain"  />
+          </Link>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>

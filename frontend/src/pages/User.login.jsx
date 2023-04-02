@@ -15,22 +15,24 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const toast = useToast();
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const userLogin=async()=>{
-    let credentials={
+  const userLogin = async () => {
+    let credentials = {
       email,
-      password
-    }
-    let res = await axios.post("https://panicky-crow-cardigan.cyclic.app/users/login",credentials);
+      password,
+    };
+    let res = await axios.post(
+      "https://panicky-crow-cardigan.cyclic.app/users/login",
+      credentials
+    );
     localStorage.setItem("userToken", res.data.token);
     localStorage.setItem("userEmail", credentials.email);
-
+    console.log(res);
     try {
       if (res.data.token) {
         toast({
@@ -41,12 +43,20 @@ const Login = () => {
           isClosable: true,
         });
         navigate("/dashboard");
+      } 
+      if(res.status!==200){
+        toast({
+          title: `Please enter correct credentials`,
+          description: "",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     } catch (error) {
       console.log(error);
     }
-   
-  }
+  };
   return (
     <>
       <HStack bgColor={"#262a3b"} h={"90px"}>
@@ -73,7 +83,7 @@ const Login = () => {
           <FormControl id="email" isRequired>
             <FormLabel>Email</FormLabel>
             <Input
-            onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
               _placeholder={{ color: "gray.500" }}
               type="email"
@@ -81,11 +91,15 @@ const Login = () => {
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
-            <Input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+            <Input
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              type="password"
+            />
           </FormControl>
           <Stack spacing={6}>
             <Button
-            onClick={userLogin}
+              onClick={userLogin}
               alignSelf={"center"}
               mt={"30px"}
               w={"50%"}
