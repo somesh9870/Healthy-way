@@ -28,6 +28,7 @@ const userSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    active: Boolean,
   },
   {
     versionKey: false,

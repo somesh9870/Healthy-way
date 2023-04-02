@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const connection = require("./config/db");
+const cors = require("cors");
 
 const session = require("express-session");
 const userRouter = require("./routes/user.routes");
@@ -10,6 +11,7 @@ const adminRouter = require("./routes/admin.routes");
 const nutriRouter = require("./routes/nutrient.route");
 
 const app = express();
+app.use(cors());
 
 // Middleware --
 app.use(express.json());
@@ -23,11 +25,11 @@ app.use(
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
-app.use("/nutrient", nutriRouter);   // to get all data
+app.use("/nutrient", nutriRouter); // to get all data
 
 // to make relationship between users and data
-app.use(auth)
-app.use("/userdata", userDataRouter);    // dashboard and diary -- with token
+app.use(auth);
+app.use("/userdata", userDataRouter); // dashboard and diary -- with token
 
 // listening to server --
 app.listen(process.env.port, async () => {
