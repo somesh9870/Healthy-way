@@ -34,7 +34,11 @@ export default function Navbar() {
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         m={"auto"}
-        w={"70%"}
+        w={{
+          base: "100%",
+          md: "100%",
+          lg: "70%",
+        }}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -56,7 +60,7 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Image src="./Healthy way logo.png" h={"80px"} w={"250px"} />
+          <Image src="./HealthyWay_Logo.png" h={{base:"100px",md:"80px",lg:"80px"}} w={{base:"250px",md:"200px",lg:"230px"}} fit="contain"  />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
