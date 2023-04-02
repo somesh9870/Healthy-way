@@ -29,7 +29,7 @@ export default function VerifyOTP() {
     if (info.otp === OTP) {
       toast({
         title: "Welcome to Healthy Way",
-        status: "error",
+        status: "success",
         duration: 3000,
         isClosable: true,
       });

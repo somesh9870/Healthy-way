@@ -40,7 +40,7 @@ const Login = () => {
           duration: 3000,
           isClosable: true,
         });
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -93,7 +93,7 @@ const Login = () => {
               bg={"#005c5c"}
               color={"white"}
               _hover={{
-                bg: "blue.500",
+                bg: "#005c5c",
               }}
             >
               LOG IN

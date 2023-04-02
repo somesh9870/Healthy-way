@@ -110,7 +110,7 @@ const Signup = () => {
     }
     if (res.status === 200) {
       toast({
-        title: "Verify OTP sent to your mail",
+        title: "SIgned Up successfull, Please login",
         description: "Your Profile has been creatd on Loseit",
         status: "success",
         duration: 3000,
@@ -120,7 +120,7 @@ const Signup = () => {
       let otp=res.data.otp
       info.otp=otp;
       localStorage.setItem("info",JSON.stringify(info))
-      navigate("/verify-otp");
+      navigate("/login");
     }
   };
 
