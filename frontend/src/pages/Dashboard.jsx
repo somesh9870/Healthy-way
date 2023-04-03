@@ -269,7 +269,7 @@ export default function Dashboard() {
                                 <Flex p="4" borderRadius="15px" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" flexDir="column" gap="20px">
                                     <Flex alignItems="center" gap="20px">
                                         <Text>Serving Size</Text>
-                                        <Input type="text" w="auto" placeholder={statData.servingsize} />
+                                        <Input type="text" w="auto" placeholder={statData.servingsize} value={statData.servingsize} onChange={(e) => setStatData({...statData, servingsize : e.target.value})} />
                                     </Flex>
                                     <Flex justifyContent="space-around" alignItems="center">
                                         <Button backgroundColor="#44d07b" color="#272a3a" _hover={{bgColor: "#3b3f4d", color:"#44d07b"}} onClick={handleAdd}>Add to Diary</Button>
