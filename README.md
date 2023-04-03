@@ -6,4 +6,4 @@ Healthyway is a website that functions as a nutrition tracking tool to help user
  
  
 
-<a href="https://user-images.githubusercontent.com/112800148/229406886-66347cf9-6ee1-436b-88ea-b8364f6de234.jpg"> </a>
+![heathyWay-Logo-2](https://user-images.githubusercontent.com/112800148/229407238-62ef717d-228d-4d14-888a-55ad7fee2b26.jpg)
