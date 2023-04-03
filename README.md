@@ -84,11 +84,6 @@ As part of our collaborative project during Construct Week at Masai School, we d
 ![Screenshot 2023-04-03 093514](https://user-images.githubusercontent.com/112800148/229409547-45d22936-4842-4cb3-a327-c95a849989e0.png)
 
 
-## Admin Dashboard
-
-![Screenshot 2023-04-03 093557](https://user-images.githubusercontent.com/112800148/229409922-0b0c4776-c147-4e03-a76b-faf1eb3c9644.png)
-
-
 ## User's Page
 
 ![Screenshot 2023-04-03 093614](https://user-images.githubusercontent.com/112800148/229409930-0f19e9a6-1a7d-4c17-bfbc-da129421f3b2.png)
