@@ -18,7 +18,7 @@ As part of our collaborative project during Construct Week at Masai School, we d
 
 ## Tech Stack
 
--Frontend
+- Frontend
  
   - React
   - JavaScript
@@ -26,11 +26,78 @@ As part of our collaborative project during Construct Week at Masai School, we d
   - Chakr UI
   - Redux
 
--Backend
+- Backend
 
   - Node JS
   - Express JS
   
--Database
+- Database
   
   - MongoDB Atlas
+
+## Overview of project
+
+## Home Page
+
+![Screenshot 2023-04-03 093037](https://user-images.githubusercontent.com/112800148/229409207-292906d6-cbc8-46af-8a32-5dc2e282594a.png)
+
+## Support Page
+
+![Screenshot 2023-04-03 093128](https://user-images.githubusercontent.com/112800148/229409276-d2eadfec-23da-4f02-8273-dfd3be15534d.png)
+
+
+## Blog Page
+
+![Screenshot 2023-04-03 093147](https://user-images.githubusercontent.com/112800148/229409330-d7df89ca-834f-43de-b07a-c859ceed9fe0.png)
+
+
+## About Page
+
+![Screenshot 2023-04-03 093201](https://user-images.githubusercontent.com/112800148/229409349-1449cc49-3587-494e-ac06-922bc481dc1b.png)
+
+
+## Signup Page
+
+![Screenshot 2023-04-03 093224](https://user-images.githubusercontent.com/112800148/229409460-78c9dc23-7f69-4ea4-8626-adac53790387.png)
+
+
+## Login Page
+
+![Screenshot 2023-04-03 093242](https://user-images.githubusercontent.com/112800148/229409467-a97baee6-097a-43e2-98ac-4b9251a989ca.png)
+
+
+## Dashboard
+
+![Screenshot 2023-04-03 093325](https://user-images.githubusercontent.com/112800148/229409484-6b5a77da-110e-455b-8a4b-65ce36d0d22f.png)
+
+
+
+## Diary Page
+
+![Screenshot 2023-04-03 093425](https://user-images.githubusercontent.com/112800148/229409507-f653018c-56e6-4009-937c-f3e9cb6cd112.png)
+![Screenshot 2023-04-03 093438](https://user-images.githubusercontent.com/112800148/229409516-588ea2bc-1a0d-4470-ae29-ec8e4722363a.png)
+![Screenshot 2023-04-03 093450](https://user-images.githubusercontent.com/112800148/229409538-e4eb380c-7aae-4812-9c31-015787096e78.png)
+
+
+## Plans Page
+
+![Screenshot 2023-04-03 093514](https://user-images.githubusercontent.com/112800148/229409547-45d22936-4842-4cb3-a327-c95a849989e0.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
