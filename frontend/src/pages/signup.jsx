@@ -68,9 +68,12 @@ const Signup = () => {
   const handlesignup = async (e) => {
     e.preventDefault();
     console.log(form);
-    const res = await axios.post("https://panicky-crow-cardigan.cyclic.app/users/signup",form);
+    const res = await axios.post(
+      "https://panicky-crow-cardigan.cyclic.app/users/signup",
+      form
+    );
     const data = res.data;
-    console.log(res)
+    console.log(res);
 
     if (res.status === "error") {
       toast({
@@ -117,10 +120,10 @@ const Signup = () => {
         duration: 3000,
         isClosable: true,
       });
-      let info=form
-      let otp=res.data.otp
-      info.otp=otp;
-      localStorage.setItem("info",JSON.stringify(info))
+      let info = form;
+      let otp = res.data.otp;
+      info.otp = otp;
+      localStorage.setItem("info", JSON.stringify(info));
       navigate("/login");
     }
   };
@@ -133,9 +136,9 @@ const Signup = () => {
   return (
     <>
       <HStack bgColor={"#262a3b"} h={"90px"}>
-      <Link href="/">
-        <Image ml={"30px"} h={"70px"} src="./HealthyWay_Logo.png"></Image>
-          </Link>
+        <Link href="/">
+          <Image ml={"30px"} h={"70px"} src="./HealthyWay_Logo.png"></Image>
+        </Link>
       </HStack>
       <Box
         bgImage={
@@ -147,7 +150,7 @@ const Signup = () => {
         bgPosition={"right bottom"}
       >
         <Box>
-          <Box w={{base:"100%",md:"80%",lg:"41%"}} m={"auto"}>
+          <Box w={{ base: "100%", md: "80%", lg: "41%" }} m={"auto"}>
             <Heading
               size={"lg"}
               fontWeight="700"
@@ -169,7 +172,7 @@ const Signup = () => {
                 <Box
                   w={"100%"}
                   m={"auto"}
-                  p={{base:"4",md:"10",lg:"10"}}
+                  p={{ base: "4", md: "10", lg: "10" }}
                   bgColor={"white"}
                   boxShadow={"md"}
                   borderRadius={"8px"}
@@ -214,8 +217,6 @@ const Signup = () => {
                       w={"60%"}
                       type="password"
                       placeholder=" Confirm password "
-                      
-           
                     />
                   </HStack>
                 </Box>
@@ -230,7 +231,7 @@ const Signup = () => {
                   fontSize="16px"
                   fontWeight={"medium"}
                   boxShadow="lg"
-                  p={{base:"0",md:"10",lg:"10"}}
+                  p={{ base: "0", md: "10", lg: "10" }}
                 >
                   <Box
                     display={"flex"}
@@ -276,7 +277,7 @@ const Signup = () => {
                     </HStack>
                     <HStack
                       justifyContent={"space-between"}
-                      w={{base:"90%",md:"80%",lg:"80%"}}
+                      w={{ base: "90%", md: "80%", lg: "80%" }}
                       mt={"12px"}
                     >
                       <Text fontSize={"xl"} fontWeight={"500"}>
@@ -285,6 +286,8 @@ const Signup = () => {
                       <Input
                         w={"60%"}
                         type={"date"}
+                        min="1990-04-01"
+                        max="2023-04-30"
                         onChange={Targetvalue}
                         name="birthday"
                       />
@@ -295,7 +298,6 @@ const Signup = () => {
                       w={"80%"}
                       mt={"12px"}
                       alignItems={"end"}
-                      
                     >
                       <Text fontSize={"xl"} fontWeight={"500"}>
                         Height
@@ -303,7 +305,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>ft</FormLabel>
                         <Select
-                         w={{base:"45px",md:"90px",lg:"90px"}}
+                          w={{ base: "45px", md: "90px", lg: "90px" }}
                           size={"md"}
                           type="number"
                           name="ft"
@@ -323,7 +325,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>in</FormLabel>
                         <Select
-                          w={{base:"45px",md:"90px",lg:"90px"}}
+                          w={{ base: "45px", md: "90px", lg: "90px" }}
                           size={"md"}
                           type="number"
                           name="in"
@@ -348,7 +350,7 @@ const Signup = () => {
                       <Box>
                         <FormLabel fontSize={"13px"}>cm</FormLabel>
                         <Input
-                          w={{base:"45px",md:"90px",lg:"90px"}}
+                          w={{ base: "45px", md: "90px", lg: "90px" }}
                           type={"number"}
                           onChange={Targetvalue}
                           size={"md"}
@@ -368,7 +370,7 @@ const Signup = () => {
                       <HStack>
                         <Input
                           type={"number"}
-                          w={{base:"70px",md:"120px",lg:"120px"}}
+                          w={{ base: "70px", md: "120px", lg: "120px" }}
                           size={"md"}
                           name="weight"
                           onChange={Targetvalue}
@@ -376,7 +378,7 @@ const Signup = () => {
                         <Select
                           size={"md"}
                           placeContent="select"
-                          w={{base:"80px",md:"170px",lg:"170px"}}
+                          w={{ base: "80px", md: "170px", lg: "170px" }}
                           onChange={Targetvalue}
                         >
                           <option value="kg"> Kilograms</option>
