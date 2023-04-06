@@ -28,6 +28,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const ProfPlan = () => {
   const [open, setOpen] = useState(false);
@@ -248,9 +249,9 @@ const ProfPlan = () => {
             bg="#44d07b"
             color={"white"}
             fontSize={["10px", "13px", "17px"]}
-            onClick={onOpen}
+            // onClick={onOpen}
           >
-            SUBSCRIBE NOW
+            <Link to={"/payment"}>SUBSCRIBE NOW</Link>
           </Button>
         </Box>
       </Flex>

@@ -17,6 +17,7 @@ import {
   Input,
   useToast,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const GiftSubscription = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -83,9 +84,9 @@ const GiftSubscription = () => {
             _hover={"none"}
             bg="#ff6733"
             color={"white"}
-            onClick={onOpen}
+            // onClick={onOpen}
           >
-            SUBSCRIBE NOW
+            <Link to={"/payment"}>SUBSCRIBE NOW</Link>
           </Button>
         </Box>
       </Flex>

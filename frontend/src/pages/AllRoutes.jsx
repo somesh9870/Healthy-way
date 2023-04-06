@@ -19,6 +19,7 @@ import AdminUsersNutriData from "./Admin/AdminUsersNutriData";
 import Plans from "./Plans";
 import PageNotFound from "./PageNotFound";
 import { PrivateRoute } from "../components/PrivateRoute";
+import Payment from "./Payment";
 
 const AllRoutes = () => {
   return (
@@ -37,9 +38,38 @@ const AllRoutes = () => {
         <Route path="/admin/users/:id" element={<AdminUsersNutriData />} />
         <Route path="/admin/nutridata" element={<AdminNutriData />} />
         <Route path="/admin/nutridata/add" element={<AdminAddNutridata />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/diary" element={<PrivateRoute><Diary /></PrivateRoute>} />
-        <Route path="/plans" element={<PrivateRoute><Plans /></PrivateRoute>} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/diary"
+          element={
+            <PrivateRoute>
+              <Diary />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/plans"
+          element={
+            <PrivateRoute>
+              <Plans />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <PrivateRoute>
+              <Payment />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
