@@ -31,8 +31,9 @@ export default function Sidebar() {
     localStorage.removeItem("userEmail");
     toast({
       title: "Logout Successful.",
-      status: "success",
+      status: "warning",
       position: "top",
+      duration: 3000,
       isClosable: true,
     });
     navigate("/");

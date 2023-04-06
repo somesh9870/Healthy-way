@@ -24,6 +24,7 @@ const Signup = () => {
   const [checkedItems, setCheckedItems] = React.useState([false, false, false]);
   const [isDisableds, setDisables] = useState(false);
   const [form, setform] = useState({});
+  const [isButLoading, setIsButLoading] = useState(false);
 
   const toast = useToast();
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ const Signup = () => {
   const handlesignup = async (e) => {
     e.preventDefault();
     console.log(form);
+    setIsButLoading(true);
     const res = await axios.post(
       "https://panicky-crow-cardigan.cyclic.app/users/signup",
       form
@@ -113,6 +115,7 @@ const Signup = () => {
       });
     }
     if (res.status === 200) {
+      setIsButLoading(false);
       toast({
         title: "SIgned Up successfull, Please login",
         description: "Your Profile has been creatd on Loseit",

@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, Image, Link, Text } from "@chakra-ui/react";
+import { HStack, Image, Link, Text, Spinner } from "@chakra-ui/react";
 import {
   Button,
   Flex,
@@ -20,41 +20,43 @@ const Login = () => {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isButLoading, setIsButLoading] = useState(false);
 
   const userLogin = async () => {
     let credentials = {
       email,
       password,
     };
-    let res = await axios.post(
-      "https://panicky-crow-cardigan.cyclic.app/users/login",
-      credentials
-    );
-    localStorage.setItem("userToken", res.data.token);
-    localStorage.setItem("userEmail", credentials.email);
-    console.log(res);
+    setIsButLoading(true);
     try {
+      let res = await axios.post(
+        "https://panicky-crow-cardigan.cyclic.app/users/login",
+        credentials
+      );
+      localStorage.setItem("userToken", res.data.token);
+      localStorage.setItem("userEmail", credentials.email);
+
       if (res.data.token) {
         toast({
-          title: `Login Successfull`,
+          title: "Login Successful",
           description: "",
           status: "success",
-          duration: 3000,
+          duration: 2500,
           isClosable: true,
+          position: "top",
         });
+        setIsButLoading(false);
         navigate("/dashboard");
-      } 
-      if(res.status!==200){
-        toast({
-          title: `Please enter correct credentials`,
-          description: "",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
       }
     } catch (error) {
-      console.log(error);
+      toast({
+        title: "Wrong Credentials",
+        description: "",
+        status: "error",
+        duration: 2500,
+        isClosable: true,
+        position: "bottom-right",
+      });
     }
   };
   return (
@@ -110,7 +112,17 @@ const Login = () => {
                 bg: "#005c5c",
               }}
             >
-              LOG IN
+              {isButLoading && (
+                <Spinner
+                  thickness="2px"
+                  speed="0.50s"
+                  emptyColor="gray.200"
+                  color="black"
+                  size="md"
+                />
+              )}
+
+              {!isButLoading && `Login`}
             </Button>
             <Text textAlign={"center"}>
               Not a member? <br />{" "}
