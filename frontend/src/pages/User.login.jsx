@@ -22,7 +22,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isButLoading, setIsButLoading] = useState(false);
 
-  const userLogin = async () => {
+  const userLogin = async (e) => {
+    e.preventDefault();
     let credentials = {
       email,
       password,
@@ -57,6 +58,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom-right",
       });
+      setIsButLoading(false);
     }
   };
   return (
@@ -82,27 +84,31 @@ const Login = () => {
           >
             Welcome Back
           </Heading>
-          <FormControl id="email" isRequired>
-            <FormLabel>Email</FormLabel>
-            <Input
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email Address"
-              _placeholder={{ color: "gray.500" }}
-              type="email"
-            />
-          </FormControl>
-          <FormControl id="password" isRequired>
-            <FormLabel>Password</FormLabel>
-            <Input
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              type="password"
-            />
-          </FormControl>
-          <Stack spacing={6}>
+          <form onSubmit={userLogin}>
+            <FormControl id="email" isRequired>
+              <FormLabel>Email</FormLabel>
+              <Input
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email Address"
+                _placeholder={{ color: "gray.500" }}
+                type="email"
+                required
+              />
+            </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Password</FormLabel>
+              <Input
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                type="password"
+                required
+              />
+            </FormControl>
+
             <Button
-              onClick={userLogin}
               alignSelf={"center"}
+              display={"block"}
+              m="auto"
               mt={"30px"}
               w={"50%"}
               size={"lg"}
@@ -111,6 +117,7 @@ const Login = () => {
               _hover={{
                 bg: "#005c5c",
               }}
+              type="submit"
             >
               {isButLoading && (
                 <Spinner
@@ -124,6 +131,8 @@ const Login = () => {
 
               {!isButLoading && `Login`}
             </Button>
+          </form>
+          <Stack spacing={6}>
             <Text textAlign={"center"}>
               Not a member? <br />{" "}
               <Link
